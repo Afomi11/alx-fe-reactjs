@@ -16,15 +16,15 @@ const Search = () => {
 
     try {
       const data = await fetchUserData(username, location, minRepos);
-      
-      // Ensure data.items exists and has a length
+
+      // Check if no items were found
       if (!data.items || data.items.length === 0) {
-        setError("Looks like we can't find the user."); // Key line
+        setError("Looks like we can't find the user."); // Ensure this line is present
       } else {
-        setUsers(data.items); // Assuming response structure contains items
+        setUsers(data.items); // Use the items returned from the API
       }
     } catch (err) {
-      setError("An error occurred while fetching user data."); // General error handling
+      setError("An error occurred while fetching user data.");
     } finally {
       setLoading(false);
     }
@@ -56,7 +56,7 @@ const Search = () => {
       </form>
 
       {loading && <p>Loading...</p>}
-      {error && <p>{error}</p>} {/* This should display your error message */}
+      {error && <p>{error}</p>} {/* This should display the error message */}
 
       <ul>
         {users.map((user) => (
@@ -73,4 +73,3 @@ const Search = () => {
 };
 
 export default Search;
-
