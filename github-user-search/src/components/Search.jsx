@@ -58,7 +58,8 @@ const Search = () => {
 
       <ul>
         {users.map((user) => (
-          <li key={user.id}>
+          <li key={user.id} className="flex items-center">
+            <img src={user.avatar_url} alt={`${user.login} avatar`} className="w-10 h-10 rounded-full mr-2" />
             <a href={user.html_url} target="_blank" rel="noopener noreferrer">
               {user.login}
             </a>
@@ -70,4 +71,5 @@ const Search = () => {
 };
 
 export default Search;
+
 
