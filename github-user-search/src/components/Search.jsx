@@ -16,13 +16,13 @@ const Search = () => {
 
     try {
       const data = await fetchUserData(username, location, minRepos);
-      if (data.items.length === 0) {
-        setError("Looks like we can't find the user.");
+      if (data.items && data.items.length === 0) {
+        setError("Looks like we can't find the user."); // This is the key line
       } else {
         setUsers(data.items); // Assuming the response structure contains items
       }
     } catch (err) {
-      setError(err.message);
+      setError("An error occurred while fetching user data."); // Handle errors
     } finally {
       setLoading(false);
     }
@@ -54,7 +54,7 @@ const Search = () => {
       </form>
 
       {loading && <p>Loading...</p>}
-      {error && <p>{error}</p>}
+      {error && <p>{error}</p>} {/* Display error if it exists */}
 
       <ul>
         {users.map((user) => (
