@@ -19,7 +19,7 @@ const Search = () => {
 
       // Check if no users were found
       if (!data.items || data.items.length === 0) {
-        setError("Looks like we can't find the user."); // Make sure this line is present and matches exactly
+        setError("Looks like we cant find the user."); // Ensure this message matches exactly
       } else {
         setUsers(data.items);
       }
@@ -73,4 +73,3 @@ const Search = () => {
 };
 
 export default Search;
-
