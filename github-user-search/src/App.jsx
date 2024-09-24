@@ -1,21 +1,24 @@
-import React from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import Home from './components/Home'; // Home component for the search functionality
-import NotFound from './components/NotFound'; // Optional: a Not Found page
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import { useState } from 'react';
+import reactLogo from './assets/react.svg';
+import viteLogo from '/vite.svg';
+import './App.css';
+import UserSearch from './components/UserSearch';
+import Home from './components/Home';
 
 function App() {
   return (
     <Router>
-      <div className="container mx-auto py-8">
-        <h1 className="text-3xl font-bold mb-4">GitHub User Search</h1>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          {/* Optional: Add more routes as needed */}
-          <Route path="*" element={<NotFound />} /> {/* Optional Not Found Route */}
-        </Routes>
-      </div>
+      <nav>
+        <Link to="/">Home</Link> | <Link to="/user-search">User Search</Link>
+      </nav>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/user-search" element={<UserSearch />} />
+      </Routes>
     </Router>
   );
 }
 
 export default App;
+  
